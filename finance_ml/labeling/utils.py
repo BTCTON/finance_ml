@@ -1,3 +1,6 @@
+import numbers
+
+
 def drop_labels(events, min_pct=0.05):
     while True:
         df = events['bin'].value_counts(normalize=True)
@@ -11,15 +14,15 @@ def drop_labels(events, min_pct=0.05):
 def get_partial_index(df, start=None, end=None):
     """Get partial time index according to start and end
 
-    Parameters
-    ----------
-    df: pd.DatFrame or pd.Series
-    start: str, optional, e.g., '2000-01-01'
-    end: str, optional, e.g., '2017-08-31'
+    Args:
+        df (pd.DatFrame or pd.Series)
 
-    Returns
-    -------
-    pd.DatetimeIndex
+        start (datetime.datetime, optional): e.g., datetime(2018, 1, 1)
+
+        end (datetime.datetime, optional): e.g., dateteim(2018, 3, 1)
+
+    Returns:
+        pd.DatetimeIndex
     """
     if start is not None:
         df = df.loc[df.index >= start]
